@@ -4,13 +4,13 @@
       <img src="temp-icon.png" alt="Thermometer icon" />
       <div>
         <h2>Current Temperatures</h2>
-        <p>{{ currentDate }}</p>
+        <p>{{ currentDate | date:'medium'}}</p>
       </div>
     </header>
-    <p>New York: {{ currentTemperaturs.newYork }}</p>
-    <p>Berlin: {{ currentTemperaturs.berlin }}</p>
-    <p>Paris: {{ currentTemperaturs.paris }}</p>
-    <p>Chicago: {{ currentTemperaturs.chicago }}</p>
+    <p>New York: {{ currentTemperaturs.newYork| temperature:'fah':'cel' }}</p>
+    <p>Berlin: {{ currentTemperaturs.berlin |temperature:'cel':'fah' }}</p>
+    <p>Paris: {{ currentTemperaturs.paris |temperature:'fah'}}</p>
+    <p>Chicago: {{ currentTemperaturs.chicago |temperature:'cel'}}</p>
   </article>
 
   <article class="temperatures">
@@ -23,7 +23,7 @@
     </header>
     <ul>
       @for (temperature of historicTemperatures; track temperature) {
-      <li (click)="onReset($index)">{{ temperature }}</li>
+      <li (click)="onReset($index)">{{ temperature | temperature:'cel' }}</li>
       }
     </ul>
   </article>
